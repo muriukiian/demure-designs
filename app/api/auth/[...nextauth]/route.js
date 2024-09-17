@@ -3,12 +3,13 @@ import User from "@/schema/page";
 import bcrypt from 'bcryptjs';
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { strategy } from "sharp";
 
 export const authOptions = {
     providers: [
         CredentialsProvider({
             id: "credentials",
-            name: "Credentials",
+            name: "credentials",
             credentials: {
                 email: { label: "email", type: "text" },
                 password: { label: "password", type: "password" }
@@ -42,6 +43,9 @@ export const authOptions = {
                 return true;
             }
             return false;
+        },
+        session:{
+            strategy: 'jwt'
         }
     }
 };
