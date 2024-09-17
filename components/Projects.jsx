@@ -18,7 +18,7 @@ const Projects = () => {
                 layout, ensuring content is well-organized and easy to navigate. Interactive elements and 
                 responsive components adapt to various devices, providing fluid transitions and real-time 
                 content updates without page reloads.
-                The app's robust session management uses secure authentication
+                The app&#39;s robust session management uses secure authentication
                 (JWT or OAuth) and token persistence, allowing users to log in, access
                 personalized dashboards, and resume sessions across devices. 
                 Session states, such as user preferences and input data, are synchronized 
