@@ -40,7 +40,7 @@ export const authOptions = {
                 }
             }
         })
-    ]
+    ],
     callbacks: {
         async signIn({ user, account }) {
             if (account?.provider == 'credentials') {
