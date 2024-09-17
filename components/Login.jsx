@@ -17,7 +17,6 @@ function Login() {
     }, [sessionStatus, router])
 
     const handleSubmit = async(e) => {
-        e.preventDefault();
 
         const email = e.target[0].value;
         const password = e.target[1].value;
@@ -28,6 +27,7 @@ function Login() {
         }
         else{
             try {
+                e.preventDefault();
                 const res = await signIn('https://demure-designs.vercel.app/credentials', {
                     redirect:false,
                     email,password
