@@ -28,7 +28,7 @@ function Login() {
         else{
             try {
                 e.preventDefault();
-                const res = await signIn('https://demure-designs.vercel.app/credentials', {
+                const res = await signIn('credentials', {
                     redirect:false,
                     email,password
                 })

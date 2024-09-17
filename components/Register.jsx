@@ -35,7 +35,7 @@ function Register() {
             return;
         }
         try {
-            const res = await fetch("https://demure-designs-git-main-muriukiians-projects.vercel.app/api/register", {
+            const res = await fetch("/api/register", {
                 method:"POST",
                 headers:{
                     "Content-Type" : "application/json"
