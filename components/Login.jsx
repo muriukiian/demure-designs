@@ -44,6 +44,7 @@ function Login() {
                 else{
                     console.log(res)
                     router.push('/blog')
+                    toast.success(res)
                     toast.success("User login successful");
                 }
             } catch (error) {
