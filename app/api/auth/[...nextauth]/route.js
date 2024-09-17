@@ -14,6 +14,10 @@ export const authOptions = {
                 email: { label: "email", type: "text" },
                 password: { label: "password", type: "password" }
             },
+            session: {
+                // Set to jwt in order to CredentialsProvider works properly
+                strategy: 'jwt'
+              },
             async authorize(credentials) {
                 await connectDB();
                 try {
@@ -36,11 +40,7 @@ export const authOptions = {
                 }
             }
         })
-    ],
-    session: {
-        // Set to jwt in order to CredentialsProvider works properly
-        strategy: 'jwt'
-      },
+    ]
     callbacks: {
         async signIn({ user, account }) {
             if (account?.provider == 'credentials') {
