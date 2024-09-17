@@ -3,7 +3,6 @@ import User from "@/schema/page";
 import bcrypt from 'bcryptjs';
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
-import { strategy } from "sharp";
 
 export const authOptions = {
     providers: [
@@ -14,10 +13,6 @@ export const authOptions = {
                 email: { label: "email", type: "text" },
                 password: { label: "password", type: "password" }
             },
-            session: {
-                // Set to jwt in order to CredentialsProvider works properly
-                strategy: 'jwt'
-              },
             async authorize(credentials) {
                 await connectDB();
                 try {
