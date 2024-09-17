@@ -15,7 +15,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className='fixed w-[20%]'>
+    <div className='fixed'>
         <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
           aria-controls="panel1bh-content"
@@ -62,7 +62,7 @@ export default function Sidebar() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography sx={{ color: 'text.secondary' }} className='hover:bg-teal-100 w-full rounded p-2'>
+          <Typography sx={{ color: 'text.secondary' }} className='hover:bg-teal-100 rounded w-full p-2'>
             Blog
           </Typography>
         </AccordionSummary>

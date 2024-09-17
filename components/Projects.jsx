@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const Projects = () => {
   return (
-        <div className='gap-[2]'>
+        <div className=''>
             <div className='p-2 w-[100%] bg-white'>
                 <h2 className='font-bold text-xl'>Agape web application</h2>
                 <span>Click the link below to access the web application project</span><br/>
