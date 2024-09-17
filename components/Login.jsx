@@ -42,8 +42,8 @@ function Login() {
                     }
                 }
                 else{
-                    toast.success("User login successful");
                     router.push('/blog')
+                    toast.success("User login successful");
                 }
             } catch (error) {
                 toast.error(error);
