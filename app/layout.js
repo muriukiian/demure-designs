@@ -32,11 +32,11 @@ export default function RootLayout({ children }) {
       >
         <SessionProvider session={session}>
         <NavBar />
-          <div className="flex gap-2">
+          <div className="flex gap-1">
             <div className="w-[20%] bg-teal-50 justify-center items-center">
               <Sidebar />
             </div>
-            <div className="w-[80%] w-full">
+            <div className="w-[80%] ">
               {children}
             </div>
           </div>

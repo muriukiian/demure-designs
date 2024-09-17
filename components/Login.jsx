@@ -62,9 +62,9 @@ const Login = () => {
                     <label htmlFor='password' className='fontsize:md font-bold mb-2'>Password</label><br />
                     <input type='password' name='password' id='password' className='p-2 w-full border border-gray-500 rounded' /><br />
                     <button type='submit' className='bg-teal-400 hover:bg-teal-500 p-2 rounded w-full mt-4'>Log in</button>
-                    <span>Don't have an account?
+                    <p>Don't have an account?
                         <Link href='/register' className='text-teal-700 hover:underline'> Register</Link>
-                    </span>
+                    </p>
                 </form>
         </div>
     </div>

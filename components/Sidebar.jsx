@@ -15,7 +15,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className='fixed'>
+    <div className='fixed w-[20%]'>
         <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
           aria-controls="panel1bh-content"

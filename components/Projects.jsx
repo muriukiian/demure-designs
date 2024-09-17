@@ -12,7 +12,7 @@ const Projects = () => {
                 <span>Click the link below to access the web application project</span><br/>
                 <Link href='https://agape-delta.vercel.app/' className='underline hover:font-bold'>https://agape-delta.vercel.app/</Link>
                 <Link href='https://agape-delta.vercel.app/'><Image src={AgapeImage} alt='web developer new jersey, web dev near me' className='h-[400px]'/></Link>
-                <span>
+                <p>
                 This ReactJS web application dynamically renders AI-generated content, delivering a seamless 
                 and personalized user experience. The design features a clean, modern interface with a card-based
                 layout, ensuring content is well-organized and easy to navigate. Interactive elements and 
@@ -28,7 +28,7 @@ const Projects = () => {
                 Loading indicators and skeleton screens ensure a smooth experience even during AI processing.
                     The app prioritizes accessibility, responsive design, and security, making it a dynamic,
                     user-friendly platform for personalized content consumption.
-                </span>
+                </p>
             </div>
             <div className='p-2 w-[100%] bg-white'>
                 <h2 className='font-bold text-xl'>Demure Designs</h2>
