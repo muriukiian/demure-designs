@@ -2,11 +2,15 @@ import connectDB from "@/config/db";
 import User from "@/schema/page";
 import bcrypt from 'bcryptjs';
 import NextAuth from "next-auth/next";
-import Credentials from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { signIn } from "next-auth/react";
 
 export const authOptions = {
+    session:{
+        strategy:'jwt'
+    },
     providers: [
-        Credentials({
+        CredentialsProvider({
             id: "credentials",
             name: "credentials",
             credentials: {
