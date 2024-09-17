@@ -1,10 +1,10 @@
 import Register from '@/components/Register'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <Register />
   )
 }
 
-export default page
+export default Page

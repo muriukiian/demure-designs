@@ -1,10 +1,10 @@
 import Blog from '@/components/Blog'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
   return (
     <Blog />
   )
 }
 
-export default page
+export default Page

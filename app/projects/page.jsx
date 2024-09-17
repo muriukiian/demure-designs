@@ -5,10 +5,10 @@ export const metadata ={
   title:"Web Development projects",
   description: "web designer near me best"
 } 
-const page = () => {
+const Page = () => {
   return (
     <Projects />
   )
 }
 
-export default page;
+export default Page;
