@@ -14,7 +14,7 @@ function Blog() {
       router.push("/login")
     }
   }, [sessionStatus, router ])
-  return (
+  return (sessionStatus === 'authenticated' &&
     <div className="flex justify-center items-center min-h-screen">
         <button className="bg-blue-400 hover:bg-blue-500 rounded p-2" onClick={() => signOut()}>Sign Out</button>
     </div>
