@@ -2,12 +2,12 @@ import connectDB from "@/config/db";
 import User from "@/schema/page";
 import bcrypt from 'bcryptjs';
 import NextAuth from "next-auth/next";
-import CredentialsProvider from "next-auth/providers/credentials";
+import Credentials from "next-auth/providers/credentials";
 import { strategy } from "sharp";
 
 export const authOptions = {
     providers: [
-        CredentialsProvider({
+        Credentials({
             id: "credentials",
             name: "credentials",
             credentials: {
