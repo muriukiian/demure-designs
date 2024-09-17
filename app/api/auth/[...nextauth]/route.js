@@ -37,15 +37,16 @@ export const authOptions = {
             }
         })
     ],
+    session: {
+        // Set to jwt in order to CredentialsProvider works properly
+        strategy: 'jwt'
+      },
     callbacks: {
         async signIn({ user, account }) {
             if (account?.provider == 'credentials') {
                 return true;
             }
             return false;
-        },
-        session:{
-            strategy: 'jwt'
         }
     }
 };
