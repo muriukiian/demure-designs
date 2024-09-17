@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import { toast } from 'react-toastify'
 
-const Login = () => {
+function Login() {
     const router = useRouter();
     const {data: session, status: sessionStatus} = useSession();
 

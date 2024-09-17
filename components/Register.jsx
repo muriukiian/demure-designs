@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 import React from 'react'
 import { toast } from "react-toastify"
 
-const Register = () => {
+function Register() {
     const {data:session, status:sessionStatus} = useSession()
     const router = useRouter()
 

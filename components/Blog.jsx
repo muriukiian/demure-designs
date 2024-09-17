@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import React, { useEffect } from 'react'
 
-const Blog = () => {
+function Blog() {
   const {data: session, status: sessionStatus} = useSession();
   const router  = useRouter();
 
