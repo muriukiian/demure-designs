@@ -3,16 +3,23 @@ import User from "@/schema/page";
 import bcrypt from 'bcryptjs';
 import { NextResponse } from "next/server";
 
+let isConnected
+async function ensureDbConnection(){
+    if(isConnected){
+        await connectDB();
+        console.log("DB Connected.")
+    }
+    else{
+        console.error(error);
+        throw new Error("Connection to database failed.")
+    }
+}
 export async function POST (request){
     //connect to the database
-    try {
-        await connectDB();
-        //return new NextResponse(JSON.stringify({success:"Connected to database"}),{status:200})
+    await ensureDbConnection();
+    //return new NextResponse(JSON.stringify({success:"Connected to database"}),{status:200})
     //deconstruct the request
     const {username, email, password, confirmPassword} = await request.json();
-    /*connect to the database
-      await connectDB();
-    console.log("db Connected")*/
 
     //check if user exists
     const existingUser = await User.findOne({email});
@@ -22,7 +29,7 @@ export async function POST (request){
     }
     //hash the password
     else{
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 5);
         console.log(hashedPassword);
 
          try {
@@ -38,8 +45,4 @@ export async function POST (request){
             return new NextResponse(error,{status:500});
          }
     }
-    } catch (error) {
-        return new NextResponse(error, {status:504})
-    }
-
 }
