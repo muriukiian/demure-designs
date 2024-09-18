@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "react-toastify"
 
-async function Register() {
+function Register() {
     const {data:session, status:sessionStatus} = useSession()
     const router = useRouter()
 
@@ -17,51 +17,56 @@ async function Register() {
         }
     },[sessionStatus, router]);
 
-    const handleSubmit = async(e) =>{
-        e.preventDefault();
+    useEffect(()=> {
 
-        const formData = new FormData(e.currentTarget)
-
-        const username = formData.get("username");
-        const email = formData.get("email");
-        const password = formData.get("password");
-        const confirmPassword = formData.get("confirmPassword");
-
-
-        if(!username || !email || !password || !confirmPassword){
-            toast.error("All fields are required");
-            return;
-        }
-        else if(password !== confirmPassword){
-            toast.error("Passwords do not match");
-            return;
-        }
-        try {
-            console.log("Now I contact the api")
-            const response = await fetch("/api/auth/register", {
-                method:"POST",
-                headers:{
-                    "Content-Type" : "application/json"
-                },
-                body: JSON.stringify({username,email,password,confirmPassword})
-            })
-            if(response.status === 400){
-                toast.error("User already exists.")
-                console.log("User already exists.")
+        const handleSubmit = async(e) =>{
+            e.preventDefault();
+    
+            const formData = new FormData(e.currentTarget)
+    
+            const username = formData.get("username");
+            const email = formData.get("email");
+            const password = formData.get("password");
+            const confirmPassword = formData.get("confirmPassword");
+    
+    
+            if(!username || !email || !password || !confirmPassword){
+                toast.error("All fields are required");
                 return;
             }
-            else if(response.status===201){
-                router.push("/login")
-                toast.success("User successfully registered");
-                console.log("User registered successfully.")
+            else if(password !== confirmPassword){
+                toast.error("Passwords do not match");
                 return;
             }
-        } catch (error) {
-            toast.error(error);
-            return;
+            try {
+                console.log("Now I contact the api")
+                const response = await fetch("/api/auth/register", {
+                    method:"POST",
+                    headers:{
+                        "Content-Type" : "application/json"
+                    },
+                    body: JSON.stringify({username,email,password,confirmPassword})
+                })
+                if(response.status === 400){
+                    toast.error("User already exists.")
+                    console.log("User already exists.")
+                    return;
+                }
+                else if(response.status===201){
+                    router.push("/login")
+                    toast.success("User successfully registered");
+                    console.log("User registered successfully.")
+                    return;
+                }
+            } catch (error) {
+                toast.error(error);
+                return;
+            }
         }
+        handleSubmit(e);
         
-    }
+    },[onSubmit])
+
 
   return (sessionStatus !== "authenticated" &&
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
