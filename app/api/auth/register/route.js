@@ -5,9 +5,9 @@ import { NextResponse } from "next/server";
 
 export async function POST (request){
     //connect to the database
-    await connectDB();
-    console.log("db Connected")
-
+    try {
+        await connectDB();
+        //return new NextResponse(JSON.stringify({success:"Connected to database"}),{status:200})
     //deconstruct the request
     const {username, email, password, confirmPassword} = await request.json();
     /*connect to the database
@@ -38,4 +38,8 @@ export async function POST (request){
             return new NextResponse(error,{status:500});
          }
     }
+    } catch (error) {
+        return new NextResponse(error, {status:504})
+    }
+
 }
