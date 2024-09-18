@@ -45,6 +45,7 @@ function Register() {
                 },
                 body: JSON.stringify({username,email,password,confirmPassword})
             })
+            console.log(response.status)
             if(response.status === 400){
                 toast.error("User already exists.")
                 console.log("User already exists.")
