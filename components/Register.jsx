@@ -39,7 +39,7 @@ function Register() {
         try {
             e.preventDefault();
             console.log("Now I contact the api")
-            const response = await fetch("/api/auth/register", {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/register`, {
                 method:"POST",
                 headers:{
                     "Content-Type" : "application/json"
