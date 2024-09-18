@@ -6,7 +6,8 @@ import { NextResponse } from "next/server";
 export async function POST (request){
     const {username, email, password, confirmPassword} = await request.json();
     //connect to the database
-    const dbConnection = await connectDB();
+    await connectDB();
+    console.log("db Connected")
 
     //check if user exists
     const existingUser = await User.findOne({email});
