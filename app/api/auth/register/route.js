@@ -3,21 +3,10 @@ import User from "@/schema/page";
 import bcrypt from 'bcryptjs';
 import { NextResponse } from "next/server";
 
-let isConnected
-async function ensureDbConnection(){
-    if(!isConnected){
-        await connectDB();
-        isConnected = true;
-        console.log("DB Connected.")
-    }
-    else{
-        console.error("Database connection error.",error);
-        throw new Error("Connection to database failed.")
-    }
-}
+
 export async function POST (request){
     //connect to the database
-    await ensureDbConnection();
+    await connectDB();
     //return new NextResponse(JSON.stringify({success:"Connected to database"}),{status:200})
     //deconstruct the request
     const {username, email, password, confirmPassword} = await request.json();
