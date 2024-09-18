@@ -65,7 +65,7 @@ function Register() {
         }
         handleSubmit(e);
         
-    },[onSubmit])
+    },[{onSubmit}])
 
 
   return (sessionStatus !== "authenticated" &&
