@@ -18,7 +18,6 @@ function Register() {
     },[sessionStatus, router]);
 
     const handleSubmit = async(e) =>{
-        e.preventDefault();
 
         const formData = new FormData(e.currentTarget)
 
@@ -37,6 +36,7 @@ function Register() {
             return;
         }
         try {
+            e.preventDefault();
             console.log("Now I contact the api")
             const response = await fetch("/api/auth/register", {
                 method:"POST",
