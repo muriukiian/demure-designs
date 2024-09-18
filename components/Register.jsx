@@ -37,6 +37,7 @@ async function Register() {
             return;
         }
         try {
+            console.log("Now I contact the api")
             const res = await fetch("https://demure-designs.vercel.app/api/auth/register", {
                 method:"POST",
                 headers:{
@@ -46,11 +47,13 @@ async function Register() {
             })
             if(res.status === 400){
                 toast.error("User already exists.")
+                console.log("User already exists.")
                 return;
             }
             else if(res.status===201){
                 router.push("/login")
                 toast.success("User successfully registered");
+                console.log("User registered successfully.")
                 return;
             }
         } catch (error) {
