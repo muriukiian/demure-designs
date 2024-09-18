@@ -30,7 +30,17 @@ const handler = NextAuth({
                 }
             }
         })
-    ]
+    ],
+    callbacks:{
+        async signIn ({user, account}){
+            if (account?.provider == 'credentials'){
+                return true
+            }
+            else{
+                return false;
+            }
+        }
+    }
 })
 
 export {handler as GET, handler as POST};
