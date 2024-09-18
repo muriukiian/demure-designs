@@ -39,16 +39,16 @@ function Register() {
         try {
             e.preventDefault();
             console.log("Now I contact the api")
-            /*const response = await fetch("/api/auth/register", {
+            const response = await fetch("/api/auth/register", {
                 method:"POST",
                 headers:{
                     "Content-Type" : "application/json"
                 },
                 body: JSON.stringify({username,email,password,confirmPassword})
-            })*/
-            const response = await axios.post("/api/auth/register",{
-                username,email,password , confirmPassword
             })
+            /*const response = await axios.post("/api/auth/register",{
+                username,email,password , confirmPassword
+            })*/
             if(response.status === 400){
                 toast.error("User already exists.")
                 console.log("User already exists.")
