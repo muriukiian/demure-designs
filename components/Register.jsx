@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import React from "react"
 import { toast } from "react-toastify"
+import axios from "axios"
 
 function Register() {
     const {data:session, status:sessionStatus} = useSession()
