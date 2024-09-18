@@ -38,7 +38,7 @@ async function Register() {
         }
         try {
             console.log("Now I contact the api")
-            const res = await fetch("https://demure-designs.vercel.app/api/auth/register", {
+            const res = await fetch("/api/auth/register", {
                 method:"POST",
                 headers:{
                     "Content-Type" : "application/json"
