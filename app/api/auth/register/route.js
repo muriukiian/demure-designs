@@ -5,12 +5,13 @@ import { NextResponse } from "next/server";
 
 let isConnected
 async function ensureDbConnection(){
-    if(isConnected){
+    if(!isConnected){
         await connectDB();
+        isConnected = true;
         console.log("DB Connected.")
     }
     else{
-        console.error(error);
+        console.error("Database connection error.",error);
         throw new Error("Connection to database failed.")
     }
 }
@@ -42,7 +43,7 @@ export async function POST (request){
             return new NextResponse(JSON.stringify({success:"User registered successfully"}), {status:201})
 
          } catch (error) {
-            return new NextResponse(error,{status:500});
+            return new NextResponse(JSON.stringify({error:"Error saving users"}),{status:500});
          }
     }
 }
