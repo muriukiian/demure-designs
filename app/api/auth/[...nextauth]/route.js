@@ -1,54 +1,36 @@
 import connectDB from "@/config/db";
 import User from "@/schema/page";
+import NextAuth from "next-auth";
 import bcrypt from 'bcryptjs';
-import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { signIn } from "next-auth/react";
 
-export const authOptions = {
-    session:{
-        strategy:'jwt'
-    },
-    providers: [
+const handler = NextAuth({
+    providers:[
         CredentialsProvider({
-            id: "credentials",
-            name: "credentials",
-            credentials: {
-                email: { label: "email", type: "text" },
-                password: { label: "password", type: "password" }
+            credentials:{
+                email:{type:'text', label:"Email"},
+                password: {type:"password", label:"Password"}
             },
-            async authorize(credentials) {
-                await connectDB();
-                try {
-                    const user = await User.findOne({ email: credentials.email });
-                    if (user) {
-                        const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
-                        if (isPasswordCorrect) {
-                            return user;
-                        } else {
-                            console.error('Invalid password');
-                            throw new Error('Invalid credentials');
-                        }
-                    } else {
-                        console.error('User not found');
-                        throw new Error('User not found');
+            async authorize (credentials, req){
+                const dbConnection = await connectDB();
+                console.log(dbConnection);
+
+                const user = await User.findOne({email: credentials.email});
+                if (user){
+                    console.log(user);
+                    const isCorrectPassword = await bcrypt.compare(credentials.password, user.password);
+                    console.log(isCorrectPassword);
+                    if(isCorrectPassword){
+                        return user;
+                    }else{
+                        throw new Error("Wrong Password.")
                     }
-                } catch (error) {
-                    console.error('Authorization error:', error);
-                    throw new Error('Authorization error');
+                }else{
+                    throw new Error("Invalid Credentials")
                 }
             }
         })
-    ],
-    callbacks: {
-        async signIn({ user, account }) {
-            if (account?.provider == 'credentials') {
-                return true;
-            }
-            return false;
-        }
-    }
-};
+    ]
+})
 
-export const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export {handler as GET, handler as POST};

@@ -18,8 +18,10 @@ function Login() {
 
     const handleSubmit = async(e) => {
 
-        const email = e.target[0].value;
-        const password = e.target[1].value;
+        const formData = new FormData(e.currentTarget)
+
+        const email = formData.get("email")
+        const password = formData.get("password")
 
         if(!email || !password){
             toast.error("All fields are required.");

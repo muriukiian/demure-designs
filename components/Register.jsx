@@ -4,11 +4,10 @@ import { useSession } from "next-auth/react"
 import { useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-
-import React from 'react'
+import React from "react"
 import { toast } from "react-toastify"
 
-function Register() {
+async function Register() {
     const {data:session, status:sessionStatus} = useSession()
     const router = useRouter()
 
@@ -21,10 +20,13 @@ function Register() {
     const handleSubmit = async(e) =>{
         e.preventDefault();
 
-        const username = e.target[0].value;
-        const email = e.target[1].value;
-        const password = e.target[2].value;
-        const confirmPassword = e.target[3].value;
+        const formData = new FormData(e.currentTarget)
+
+        const username = formData.get("username");
+        const email = formData.get("email");
+        const password = formData.get("password");
+        const confirmPassword = formData.get("confirmPassword");
+
 
         if(!username || !email || !password || !confirmPassword){
             toast.error("All fields are required");
@@ -35,7 +37,7 @@ function Register() {
             return;
         }
         try {
-            const res = await fetch("/api/register", {
+            const res = await fetch("/api/auth/register", {
                 method:"POST",
                 headers:{
                     "Content-Type" : "application/json"
