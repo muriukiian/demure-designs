@@ -38,19 +38,19 @@ async function Register() {
         }
         try {
             console.log("Now I contact the api")
-            const res = await fetch("/api/auth/register", {
+            const response = await fetch("/api/auth/register", {
                 method:"POST",
                 headers:{
                     "Content-Type" : "application/json"
                 },
                 body: JSON.stringify({username,email,password,confirmPassword})
             })
-            if(res.status === 400){
+            if(response.status === 400){
                 toast.error("User already exists.")
                 console.log("User already exists.")
                 return;
             }
-            else if(res.status===201){
+            else if(response.status===201){
                 router.push("/login")
                 toast.success("User successfully registered");
                 console.log("User registered successfully.")
